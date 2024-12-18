@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowd Collect - Empower Change</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,248,253,1) 50%, rgba(69,252,96,1) 100%);
+            background-size: 400% 400%;
+            animation: backgroundFlow 15s ease infinite;
+        }
+
+        /* Keyframes for Background Animation */
+        @keyframes backgroundFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            z-index: 10;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #f1c40f;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 3s ease;
+        }
+
+        .hero button {
+            background: rgba(131, 58, 180, 1);
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            animation: fadeIn 4s ease;
+        }
+
+        .hero button:hover {
+            transform: scale(1.1);
+            background: rgba(29, 248, 253, 1);
+        }
+
+        /* Slogans Section */
+        .slogans {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .slogans h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .slogans p {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Scroll Animation */
+        .scroll-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            transition: background-color 1s ease, color 1s ease;
+        }
+
+        /* Spotlight Cursor */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            pointer-events: none;
+            background: rgba(255, 255, 255, 0.15);
+            mix-blend-mode: soft-light;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <h1>Crowd Collect</h1>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#slogans">About</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <h1>Empowering Change Together</h1>
+        <p>Join us in creating a better future for everyone.</p>
+        <a href="./create_camp.html"><button>Start Your Journey</button></a>
+    </section>
+
+    <!-- Slogans Section -->
+    <section class="slogans" id="slogans">
+        <h2>Working for a Better Tomorrow</h2>
+        <p>Every contribution makes a difference.</p>
+        <p>Let’s create a world where everyone thrives.</p>
+    </section>
+
+    <!-- Scroll Sections -->
+    <div class="scroll-section" style="background: #7f00ff;">Together, We Achieve More!</div>
+    <div class="scroll-section" style="background: #0f2027;">Your Support Matters!</div>
+    <div class="scroll-section" style="background: #f12711;">Changing Lives, One Step at a Time</div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p>© 2024 Crowd Collect. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Spotlight Effect
+        document.body.addEventListener("mousemove", (e) => {
+            const spotlight = document.body.querySelector("body::before");
+            document.body.style.setProperty("--cursorX", e.clientX + "px");
+            document.body.style.setProperty("--cursorY", e.clientY + "px");
+        });
+
+        // Scroll Animation
+        window.addEventListener("scroll", () => {
+            document.body.style.backgroundPositionY = `${window.scrollY / 2}px`;
+        });
+    </script>
+</body>
+</html>

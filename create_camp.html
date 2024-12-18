@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowdfunding DApp</title>
+    <style>
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,248,253,1) 50%, rgba(69,252,96,1) 100%);
+    color: #333333;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* Heading Styles */
+h1, h2 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: #4B6CB7;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 30px 0 15px;
+    color: #2F3B3D;
+}
+
+/* Form Styles */
+form {
+    background: rgba(255, 255, 255, 0.8); /* Softer white */
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px solid #C8D6E5; /* Light blue border */
+    border-radius: 8px;
+    font-size: 1.1rem;
+    background-color: #F1F9FC; /* Very soft blue */
+    color: #5A6770; /* Dark gray for text */
+}
+
+input:focus {
+    border-color: #A1C6EA; /* Soft blue focus border */
+    outline: none;
+    background-color: #ffffff; /* White background when focused */
+}
+
+/* Buttons */
+button {
+    background: rgb(137,196,244); /* Light soothing blue */
+    background: radial-gradient(circle, rgba(137,196,244,1) 19%, rgba(74,144,226,1) 96%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background: rgb(114,181,248); /* Slightly darker blue on hover */
+    background: radial-gradient(circle, rgba(114,181,248,1) 19%, rgba(38,118,206,1) 96%);
+    transform: scale(1.05);
+}
+
+/* Container for Sections with Morphism */
+.section-container {
+    margin-bottom: 50px;
+    display: none; /* Hide sections initially */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.section-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-container.hide {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Specific Styles for Each Section */
+#fundCampaignSection {
+    background: rgba(50, 150, 250, 0.2);
+    box-shadow: 0 10px 20px rgba(50, 150, 250, 0.3);
+    animation: fadeIn 0.5s ease-out;
+}
+
+#withdrawFundsSection {
+    background: rgba(250, 50, 150, 0.2);
+    box-shadow: 0 10px 20px rgba(250, 50, 150, 0.3);
+    animation: slideIn 0.5s ease-out;
+}
+
+#createCampaignSection {
+    background: rgba(137, 196, 244, 0.2); /* Soft pastel blue */
+    box-shadow: 0 10px 20px rgba(137, 196, 244, 0.3);
+    animation: scaleIn 0.5s ease-out;
+}
+
+#exploreCampaignsSection {
+    background: rgba(245, 203, 138, 0.2); /* Soft pastel yellow */
+    box-shadow: 0 10px 20px rgba(245, 203, 138, 0.3);
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Section Hover Effects */
+.section-container:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Link Button */
+button[onclick] {
+    font-size: 1.1rem;
+    margin-top: 20px;
+    padding: 15px 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    form {
+        width: 95%;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.8.1/web3.min.js"></script>
+</head>
+<body>
+
+    <h1>Welcome to the Crowdfunding Platform</h1>
+
+    <!-- Buttons to Toggle Sections -->
+    <div>
+        <button onclick="showSection('createCampaignSection')">Create Campaign</button>
+        <button onclick="showSection('exploreCampaignsSection')">Explore All Campaigns</button>
+    </div>
+
+    <!-- Create Campaign Section -->
+    <div id="createCampaignSection" class="section-container">
+        <h2>Launch a New Campaign</h2>
+        <form id="createCampaignForm">
+            <input type="text" id="title" placeholder="Campaign Title" required>
+            <input type="text" id="description" placeholder="Campaign Description" required>
+            <input type="number" id="goalAmount" placeholder="Goal Amount (ETH)" required>
+            <button type="submit">Create Your Campaign</button>
+        </form>
+    </div>
+
+    <!-- Explore All Campaigns Section -->
+    <div id="exploreCampaignsSection" class="section-container">
+        <h2>Explore All Campaigns</h2>
+        <button onclick="location.href='all_camp.html'">Explore All Campaigns</button>
+    </div>
+
+    <!-- Buttons to Contribute or Withdraw -->
+    <div>
+        <button onclick="showSection('fundCampaignSection')">Contribute to a Campaign</button>
+        <button onclick="showSection('withdrawFundsSection')">Withdraw Funds</button>
+    </div>
+
+    <!-- Fund Campaign Section -->
+    <div id="fundCampaignSection" class="section-container">
+        <h2>Contribute to a Campaign</h2>
+        <form id="fundCampaignForm">
+            <input type="number" id="campaignId" placeholder="Campaign ID" required>
+            <input type="number" id="fundAmount" placeholder="Amount to Fund (ETH)" required>
+            <button type="submit">Donate to Campaign</button>
+        </form>
+    </div>
+
+    <!-- Withdraw Funds Section -->
+    <div id="withdrawFundsSection" class="section-container">
+        <h2>Withdraw Campaign Funds</h2>
+        <form id="withdrawForm">
+            <input type="number" id="withdrawCampaignId" placeholder="Campaign ID" required>
+            <button type="submit">Withdraw Funds</button>
+        </form>
+    </div>
+
+    <script src="js/index.js"></script>
+
+    <script>
+        // Function to show the selected section and hide others
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-container');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        // Initial state: Show Create Campaign and Explore Campaigns sections
+        showSection('createCampaignSection');
+    </script>
+
+</body>
+</html>

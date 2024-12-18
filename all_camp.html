@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Campaigns</title>
+    <style>
+        /* General Styles */
+        /* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    overflow-x: hidden;
+
+    /* Gradient Animation */
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,248,253,1) 50%, rgba(69,252,96,1) 100%);
+    background-size: 400% 400%; /* Enlarges the gradient for smoother waves */
+    animation: backgroundFlow 20s ease infinite;
+}
+
+/* Keyframes for Smooth Gradient Flow */
+@keyframes backgroundFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+        /* Heading Styles */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Campaign List Styles */
+        #campaignList {
+            margin: 20px auto;
+            max-width: 900px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        #campaignList h3 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        #campaignList p {
+            font-size: 1rem;
+            color: #f0f8ff;
+            margin-bottom: 10px;
+        }
+
+        #campaignList hr {
+            border: none;
+            height: 1px;
+            background: #ffffff;
+            margin: 15px 0;
+            opacity: 0.4;
+        }
+
+        /* Buttons */
+        button {
+            background: rgb(137,196,244); /* Light soothing blue */
+            background: radial-gradient(circle, rgba(137,196,244,1) 19%, rgba(74,144,226,1) 96%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            margin: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: rgb(114,181,248); /* Slightly darker blue on hover */
+            background: radial-gradient(circle, rgba(114,181,248,1) 19%, rgba(38,118,206,1) 96%);
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Delete Button */
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            #campaignList {
+                width: 90%;
+            }
+
+            #campaignList h3 {
+                font-size: 1.4rem;
+            }
+
+            #campaignList p {
+                font-size: 0.9rem;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.8.1/web3.min.js"></script>
+</head>
+<body>
+    <h1>All Campaigns</h1>
+    <div id="campaignList"></div>
+    <button onclick="location.href='index.html'">Back to Home</button>
+    <button onclick="location.href='create_camp.html'">Fund Campaign</button>
+    <script src="./js/all.js"></script>
+</body>
+</html>
